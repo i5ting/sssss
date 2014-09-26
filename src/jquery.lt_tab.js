@@ -32,10 +32,10 @@
 			snapSpeed: 400,
 			keyBindings: true,
 			scrollbars: false,
-			indicators: {
-				el: document.getElementById('indicator'),
-				resize: false
-			}
+			// indicators: {
+			// 		el: document.getElementById('indicator'),
+		  // 		resize: false
+		  // 	}
 		});
 		return myScroll;
 	}
