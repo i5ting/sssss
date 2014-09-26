@@ -22,8 +22,12 @@
 
 	}
  
-	
-	function init_hor_scroll_view(){
+	/**
+	 * 横向
+	 */
+	function init_h_scroll_view(){
+		_h_scroll_view_setting();
+		
 		var myScroll = new IScroll('#wrapper', {
 			scrollX: true,
 			scrollY: false,
@@ -33,11 +37,22 @@
 			keyBindings: true,
 			scrollbars: false,
 			// indicators: {
-			// 		el: document.getElementById('indicator'),
-		  // 		resize: false
-		  // 	}
+		// 			el: document.getElementById('indicator'),
+		//   		resize: false
+		//   	}
 		});
 		return myScroll;
+	}
+	
+	function _h_scroll_view_setting(){
+			
+		var count = $('.slide').length;
+		var itemWidth = 100/count;
+		
+		// alert(count*100)
+		$('#scroller').css({'width': count*100 + '%'})
+		
+		$('.slide').css({'width':itemWidth + '%'})
 	}
 	
 	$.fn.lt_tab = function(options){
@@ -48,8 +63,12 @@
 		var opts = $.extend({},$.fn.lt_tab.defaults,options);
 
 		return this.each(function(index){
-			 
-			init_hor_scroll_view();
+		
+			init_h_scroll_view();
+			for(var i = 0;i < count; i++){
+				console.log(i);
+			}
+
 		});
 		// each end
 	};
