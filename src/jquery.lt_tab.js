@@ -22,29 +22,40 @@
 
 	}
  
-
+	
+	function init_hor_scroll_view(){
+		var myScroll = new IScroll('#wrapper', {
+			scrollX: true,
+			scrollY: false,
+			momentum: false,
+			snap: true,
+			snapSpeed: 400,
+			keyBindings: true,
+			scrollbars: false,
+			indicators: {
+				el: document.getElementById('indicator'),
+				resize: false
+			}
+		});
+		return myScroll;
+	}
+	
 	$.fn.lt_tab = function(options){
-
+		// event prevent
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		
 		//将defaults 和 options 参数合并到{}
 		var opts = $.extend({},$.fn.lt_tab.defaults,options);
 
-		/**
-		 * obj对象为当前调用该插件方法的对象。
-		 * 而后面bind里面的clickIndex = $(".tab li", obj).index($(this));
-		 * 意思就是obj对象下面的ul中的li元素索引index($(this))
-		 * 这里的$(this)则是在li元素中找到当前li元素的索引。
-		 */
 		return this.each(function(index){
 			 
-			add_iscroll(obj,objCon,opts);
+			init_hor_scroll_view();
 		});
 		// each end
 	};
 
 	/**
 	 * 定义默认配置项
-	 * minItems: li列的个数
-	 * onItem: 定义默认选中项
 	 */
 	$.fn.lt_tab.defaults = {
 		minItems: 3,
